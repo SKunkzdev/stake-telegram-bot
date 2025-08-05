@@ -1,20 +1,21 @@
+from telegram.ext import ApplicationBuilder, CommandHandler
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import ContextTypes
+
 import os
 
-TOKEN = os.getenv("BOT_TOKEN")
+# You should set this securely via environment variables
+TOKEN = os.getenv("8217176942:AAFBB2PDBpFUkjEKDjLLosx5bZdogPFacj8")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("✅ Bot is live on Render!")
-
-async def predict(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🧠 Predictor activated (mock response)")
+    await update.message.reply_text("Stake Predictor Bot Activated ✅")
 
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
+
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("predict", predict))
+
     app.run_polling()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
